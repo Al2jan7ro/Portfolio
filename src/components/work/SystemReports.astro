@@ -1,0 +1,166 @@
+<div class="lg:justify-between lg:items-right items-center justify-center flex flex-col lg:flex-row lg:mt-15 mb-20">
+
+  <a href="/proyects"
+    id="back-btn"
+    class="text-[1.1rem] sm:text-[1.3rem] lg:text-[1.2rem] px-4 py-2 sm:px-5 gap-2 lg:translate-y-0 translate-y-30
+    sm:py-3 bg-black/10 tracking-normal font-roboto font-bold cursor-none hover:bg-black
+    hover:text-white rounded-xl lg:ml-20 transition-transform duration-700 hover:scale-103">
+    Back
+  </a>
+
+  <a target="_blank" href=""
+    id="projects-btn"
+    class="text-[1.1rem] sm:text-[1.3rem] lg:text-[1.2rem] px-4 py-2 sm:px-5 lg:mr-20
+    sm:py-3 bg-black/10 tracking-normal font-roboto cursor-none hover:bg-black
+    hover:text-white transition-transform duration-700 hover:scale-103 rounded-xl font-bold items-center flex gap-2">
+    Private Proyect
+    <i class="hgi hgi-stroke hgi-github text-[1.5rem] font-bold"></i>
+  </a>
+</div>
+
+<div class="flex flex-col lg:flex-row justify-between items-center mb-50 lg:mt-0 mt-10 lg:ml-20">
+
+  <img src="/assets/Reportes.webp" alt="Sistema de Reportes"
+    class="w-[100%] rounded-3xl h-[170px] sm:h-[350px] md:h-[400px] px-5
+    lg:h-[70%px] relative overflow-hidden cursor-none">
+
+  <h1 class="text-[4.5rem] items-center text-center lg:text-left sm:text-[3rem] 
+    md:text-[4rem] lg:text-[6rem] font-BB font-bold lg:ml-10 lg:mt-0 mt-15 ">
+    SISTEMA DE REPORTES
+  </h1>
+
+</div>
+
+<section class="mt-10">
+
+  <!-- Sección: About it -->
+  <div class="flex items-center justify-between">
+    <h2 id="about-title"
+      class="text-[2rem] sm:text-3xl md:text-4xl font-BB ml-4 sm:ml-10 md:ml-20">
+      About it.
+    </h2>
+
+    <a href="/proyects"
+      class="text-[1.1rem] sm:text-[1.3rem] md:text-[1.2rem] px-4 py-2 sm:px-5 sm:py-3 
+      bg-black/10 font-roboto font-bold cursor-none hover:bg-black hover:text-white 
+      transition-transform duration-700 hover:scale-103 rounded-xl lg:mr-15 mr-5">
+      Show more
+    </a>
+  </div>
+
+  <!-- Texto resumido -->
+  <div class="px-4 md:px-8 flex justify-center mt-10">
+    <p class="text-[1.4rem] sm:text-xl lg:text-[1.5rem] font-Cg2 max-w-[900px] 
+    indent-18 text-justify leading-relaxed">
+      Sistema web interno para <span class="font-semibold">Lácteos Los Andes</span>, creado para 
+      <span class="font-semibold">gestionar incidencias y solicitudes</span> en el área de TI.  
+      Desarrollado con <span class="font-semibold">Astro, NestJS, TypeScript y MySQL</span>, permite 
+      registrar, asignar, dar seguimiento y cerrar reportes de manera eficiente, mejorando la 
+      comunicación entre usuarios y el equipo técnico.
+    </p>
+  </div>
+
+  <!-- Grid imágenes grandes -->
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-16 mb-20 px-8">
+
+    <img src="/img/reportes/repo1.webp" alt="Login Reportes"
+      class="clickable w-full h-[400px] sm:h-[500px] md:h-[600px] rounded-3xl object-cover 
+      col-span-1 md:col-span-2 transition-transform duration-700 hover:scale-103">
+
+    <img src="/img/reportes/repo2.webp" alt="Gestion Reportes"
+      class="clickable w-full h-[350px] sm:h-[450px] md:h-[500px] rounded-3xl object-cover 
+      transition-transform duration-700 hover:scale-103">
+
+    <img src="/img/reportes/repo3.webp" alt="Creación de reportes"
+      class="clickable w-full h-[350px] sm:h-[450px] md:h-[500px] rounded-3xl object-cover 
+      transition-transform duration-700 hover:scale-103">
+
+    <img src="/img/reportes/repo4.webp" alt="DGestión de departamentos"
+      class="clickable w-full h-[400px] sm:h-[500px] md:h-[600px] rounded-3xl object-cover 
+      col-span-1 md:col-span-2 transition-transform duration-700 hover:scale-103">
+  </div>
+
+  <!-- Modal -->
+  <div id="imgModal"
+    class="fixed inset-0 bg-black/80 flex items-center justify-center z-50 
+    opacity-0 pointer-events-none transition-opacity duration-300">
+    <span id="closeModal"
+      class="absolute top-5 right-8 text-white text-3xl transition-transform duration-600 hover:scale-175 font-bold">&times;</span>
+    <img id="modalImage"
+      class="max-h-[90%] max-w-[90%] rounded-2xl shadow-xl transform scale-95 transition-transform duration-300">
+  </div>
+
+  <!-- Texto + Imagen a un lado -->
+  <div class="flex flex-col lg:flex-row items-center justify-between gap-10 px-6 lg:px-20 mb-20">
+    <p class="text-[1.4rem] sm:text-xl lg:text-[1.5rem] font-Cg2 max-w-[600px] 
+    indent-18 text-justify leading-relaxed">
+      El sistema se organiza en módulos:  
+      <span class="font-semibold">Usuarios</span> (roles y autenticación con JWT),  
+      <span class="font-semibold">Reportes</span> (registro, asignación, seguimiento y cierre),  
+      y <span class="font-semibold">Gerencia</span> (control, métricas y estadísticas).  
+      Todo bajo una interfaz moderna diseñada con <span class="font-semibold">Tailwind CSS</span>.
+    </p>
+
+    <img src="/img/reportes/logoA.webp" alt="Módulos"
+      class="w-full lg:w-[700px] h-[300px] object-cover rounded-3xl transition-transform duration-700 hover:scale-103">
+  </div>
+
+
+  
+  <!-- Sección: Results -->
+  <div class="flex items-center justify-between">
+    <h2 id="about-title"
+      class="text-[2rem] flex sm:text-3xl md:text-4xl font-BB ml-4 sm:ml-10 md:ml-20">
+      RESULTS.
+    </h2>
+
+    <a href="/proyects"
+      id="projects-btn"
+      class="text-[1.1rem] sm:text-[1.3rem] md:text-[1.2rem] px-4 py-2 sm:px-5 
+      sm:py-3 bg-black/10 tracking-normal font-roboto font-bold cursor-none hover:bg-black
+      hover:text-white transition-transform duration-700 hover:scale-103 rounded-xl lg:mr-15 mr-5">
+      Show more
+    </a>
+  </div>
+
+  <div class="px-4 md:px-8 flex justify-center mt-12">
+    <p class="text-[1.4rem] sm:text-xl lg:text-[1.5rem] font-Cg2 max-w-[900px] 
+    indent-18 text-justify leading-relaxed">
+      El proyecto sustituyó procesos manuales e informales por una plataforma digital centralizada.  
+      Mejoró la <span class="font-semibold">eficiencia operativa</span>, la trazabilidad de incidencias y la 
+      <span class="font-semibold">toma de decisiones</span>.  
+      La implementación incluyó capacitación y manuales de usuario, garantizando una 
+      <span class="font-semibold">adopción exitosa</span> dentro de la empresa.
+    </p>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-16 mb-20 px-8">
+
+    <img src="/img/reportes/repo5.webp" alt="Configuracion"
+      class="clickable w-full h-[400px] sm:h-[500px] md:h-[600px] rounded-3xl object-cover 
+      col-span-1 md:col-span-2 transition-transform duration-700 hover:scale-103">
+
+    <img src="/img/reportes/repo6.webp" alt="Formulario de reportes"
+      class="clickable w-full h-[350px] sm:h-[450px] md:h-[500px] rounded-3xl object-cover 
+      transition-transform duration-700 hover:scale-103">
+
+    <img src="/img/reportes/repo7.webp" alt="Modal de datos"
+      class="clickable w-full h-[350px] sm:h-[450px] md:h-[500px] rounded-3xl object-cover 
+      transition-transform duration-700 hover:scale-103">
+  </div>
+
+
+  <div class="flex justify-center items-center mt-50 mb-50">
+
+    <a href="/proyects"
+      id="back-btn"
+      class="text-[1.1rem] sm:text-[1.3rem] lg:text-[1.2rem] px-4 py-2 sm:px-5 gap-2 
+      sm:py-3 bg-black/10 tracking-normal font-roboto font-bold cursor-none hover:bg-black
+      hover:text-white rounded-xl  transition-transform duration-700 hover:scale-103">
+      Go Back
+    </a>
+
+  
+  </div>
+
+</section>

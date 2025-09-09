@@ -1,0 +1,126 @@
+<!-- Título -->
+<div id="contact-title"
+  class="flex items-center justify-center text-center mt-20 lg:mt-10 ml-4 sm:ml-10 md:ml-20">
+  <div
+    class="font-BB font-bold text-[6rem] md:text-[5rem] lg:text-[14rem] leading-tight md:leading-[1.1]">
+    <h1 class="w-[85%] md:w-[60%]">
+      CONTACT WITH ME
+    </h1>
+  </div>
+</div>
+
+<!-- Formulario -->
+<div id="contact-form" class="flex items-center justify-center min-h-screen p-4 font-Cg2">
+  <div class="p-8 w-full max-w-3xl">
+    <!-- Alerta -->
+    <div id="form-alert"
+      class="inset-0 mb-4 p-4 rounded-lg text-white font-semibold flex justify-between items-center">
+      <span id="alert-message"></span>
+     
+    </div>
+
+    <form id="contactForm" action="https://formspree.io/f/xkgvpdga" method="POST"
+      class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      
+      <!-- Nombre -->
+      <div>
+        <label for="name" class="block text-gray-700 text-sm font-semibold mb-2">Nombre</label>
+        <input type="text" id="name" name="name"
+          class="w-full px-6 py-4 border border-gray-300 rounded-lg focus:outline-none 
+                 hover:border-black focus:border-black focus:ring-2 focus:ring-black"
+          placeholder="Tu nombre completo" required>
+      </div>
+
+      <!-- Email -->
+      <div>
+        <label for="email" class="block text-gray-700 text-sm font-semibold mb-2">Email</label>
+        <input type="email" id="email" name="email"
+          class="w-full px-6 py-4 border border-gray-300 rounded-lg focus:outline-none 
+                 hover:border-black focus:border-black focus:ring-2 focus:ring-black"
+          placeholder="tu.email@ejemplo.com" required>
+      </div>
+
+      <!-- Asunto -->
+      <div class="md:col-span-2">
+        <label for="subject" class="block text-gray-700 text-sm font-semibold mb-2">Asunto</label>
+        <input type="text" id="subject" name="subject"
+          class="w-full px-6 py-4 border border-gray-300 rounded-lg focus:outline-none 
+                 hover:border-black focus:border-black focus:ring-2 focus:ring-black"
+          placeholder="Escribe el asunto" required>
+      </div>
+
+      <!-- Descripción -->
+      <div class="md:col-span-2">
+        <label for="description" class="block text-gray-700 text-sm font-semibold mb-2">Descripción</label>
+        <textarea id="description" name="description" rows="4"
+          class="w-full px-4 py-2 border border-gray-300 rounded-lg resize-none focus:outline-none 
+                 hover:border-black focus:border-black focus:ring-2 focus:ring-black"
+          placeholder="Cuéntanos en qué podemos ayudarte." required></textarea>
+      </div>
+
+      <!-- reCAPTCHA invisible -->
+      <input type="hidden" id="g-recaptcha-response" name="g-recaptcha-response">
+      
+      <!-- Botón -->
+      <div class="md:col-span-2  flex justify-center">
+        <button id="contact-btn" type="submit"
+          class="w-full md:w-auto bg-black text-white font-bold py-2 px-8 rounded-lg hover:bg-gray-500 
+                 focus:outline-none focus:ring-2 hover:border-black focus:ring-black focus:ring-offset-2 transition-colors">
+          Enviar
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+
+<script src="/scripts/Contact.js" type="module" is:inline></script>
+
+<script>
+      import { gsap } from "gsap";
+    import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+
+    document.addEventListener("astro:page-load", () => {
+    
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Animar título
+    gsap.from("#contact-title", {
+      y: -100,
+      opacity: 0,
+      duration: 1.2,
+      ease: "power3.out",
+      scrollTrigger: {
+        trigger: "#contact-title",
+        start: "top 80%",
+      },
+    });
+
+    // Animar formulario
+    gsap.from("#contact-form", {
+      y: 50,
+      opacity: 0,
+      duration: 1.2,
+      delay: 0.2,
+      ease: "power3.out",
+      scrollTrigger: {
+        trigger: "#contact-form",
+        start: "top 80%",
+      },
+    });
+
+    // Animar botón dentro del formulario
+    gsap.from("#contact-btn", {
+      scale: 0.8,
+      opacity: 0,
+      duration: 0.8,
+      delay: 0.4,
+      ease: "back.out(1.7)",
+      scrollTrigger: {
+        trigger: "#contact-btn",
+        start: "top 85%",
+      },
+    });
+    });
+</script>

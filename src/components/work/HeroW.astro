@@ -1,0 +1,149 @@
+<!-- Título WORK -->
+<div class="flex items-center justify-center lg:justify-start mt-20 lg:mt-40 lg:ml-20">
+  <div
+    class="font-BB font-bold 
+            text-[7rem]  md:text-[4.5rem] lg:text-[12rem] 
+            leading-[1.1] sm:leading-[3rem] md:leading-[3.8rem] lg:leading-[9rem] 
+            text-left">
+
+    <h1 id="work-title">WORK</h1>
+  </div>
+</div>
+
+<!-- Grid de Proyectos -->
+<div class="flex flex-col mb-20 mt-35 px-4 sm:px-8 md:px-16 lg:px-20">
+  <h1 id="projects-title" class="font-BB items-center lg:text-right text-center text-[2rem] lg:text-[3rem] mr-5">
+    PROYECTS 2020 - 2025
+  </h1>
+
+  <div id="projects-grid" class="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8">
+    <!-- Psico App -->
+    <a id="project-1" href="/work/psico" class="group">
+      <div
+        class="imagebg w-full rounded-3xl h-[250px] sm:h-[350px] md:h-[400px] lg:h-[500px] relative overflow-hidden cursor-none">
+        <style>
+          .imagebg {
+            mask-image: linear-gradient(black 80%, transparent 100%);
+          }
+        </style>
+        <div class="absolute inset-0 transition-transform duration-700 group-hover:scale-105 bg-cover bg-center"
+          style="background-image: url('/assets/Psico.webp');"></div>
+        <div class="absolute inset-0 bg-black/20"></div>
+        <div
+          class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-700 bg-black/60">
+          <span class="text-white text-xl sm:text-2xl md:text-[3rem] font-fjlla">Sistema de Psicología</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- Reportes Web -->
+    <a id="project-2" href="work/reports" class="group">
+      <div
+        class="imagebg w-full rounded-3xl h-[250px] sm:h-[350px] md:h-[400px] lg:h-[500px] relative overflow-hidden cursor-none">
+        <div class="absolute inset-0 transition-transform duration-700 group-hover:scale-105 bg-cover bg-center"
+          style="background-image: url('/assets/Reportes.webp');"></div>
+        <div class="absolute inset-0 bg-black/20"></div>
+        <div
+          class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-700 bg-black/60">
+          <span class="text-white text-xl sm:text-2xl md:text-[3rem] font-fjlla">Sistema de Reportes</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- Landing Page -->
+    <a id="project-3" href="work/landing" class="group">
+      <div
+        class="imagebg w-full rounded-3xl h-[250px] sm:h-[350px] md:h-[400px] lg:h-[500px] relative overflow-hidden cursor-none">
+        <div class="absolute inset-0 transition-transform duration-700 group-hover:scale-105 bg-cover bg-center"
+          style="background-image: url('/assets/Landing.webp');"></div>
+        <div class="absolute inset-0 bg-black/20"></div>
+        <div
+          class="absolute inset-0 flex items-center text-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-700 bg-black/60">
+          <span class="text-white text-xl sm:text-2xl md:text-[3rem] font-fjlla">Landing Page (Lácteos los andes)</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- Blog Personal -->
+    <a id="project-4" href="work/blog" class="group">
+      <div
+        class="imagebg w-full rounded-3xl h-[250px] sm:h-[350px] md:h-[400px] lg:h-[500px] relative overflow-hidden cursor-none">
+        <div class="absolute inset-0 transition-transform duration-700 group-hover:scale-105 bg-cover bg-center"
+          style="background-image: url('/assets/blog.webp');"></div>
+        <div class="absolute inset-0 bg-black/20"></div>
+        <div
+          class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-700 bg-black/60">
+          <span class="text-white text-xl sm:text-2xl md:text-[3rem] font-fjlla">Blog La California</span>
+        </div>
+      </div>
+    </a>
+  </div>
+</div>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  import { SplitText } from "gsap/SplitText";
+
+  document.addEventListener("astro:page-load", () => {
+    gsap.registerPlugin(ScrollTrigger, SplitText);
+
+    let ctx = gsap.context(() => {
+      // Animación del título "WORK"
+      gsap.from("#work-title", {
+        y: 100,
+        opacity: 0,
+        duration: 1.5,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: "#work-title",
+          start: "top 80%",
+          toggleActions: "play none none none",
+          once: true,
+        },
+      });
+
+      // Subtítulo "PROJECTS 2020 - 2025" con SplitText palabra por palabra
+      const splitProjects = new SplitText("#projects-title", { 
+        type: "words",
+        wordsClass: "block overflow-hidden"
+      });
+
+      gsap.from(splitProjects.words, {
+        yPercent: 100,
+        opacity: 0,
+        stagger: 0.12,
+        duration: 0.8,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: "#projects-title",
+          start: "top 80%",
+          toggleActions: "play none none none",
+          once: true,
+        },
+      });
+
+      // Animación de los proyectos con fade + slide up
+      (gsap.utils.toArray("#projects-grid a") as HTMLElement[]).forEach((project, index) => {
+        gsap.from(project, {
+          y: 50,
+          opacity: 0,
+          duration: 1,
+          ease: "power2.out",
+          delay: index * 0.1,
+          scrollTrigger: {
+            trigger: project,
+            start: "top 95%",
+            toggleActions: "play none none none",
+            once: true,
+          },
+        });
+      });
+    });
+
+    // Limpieza cuando se cambia de página
+    document.addEventListener("astro:before-swap", () => {
+      if (ctx) ctx.revert();
+    }, { once: true });
+  });
+</script>

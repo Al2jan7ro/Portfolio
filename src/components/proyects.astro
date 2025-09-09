@@ -1,0 +1,179 @@
+<section class="mt-20 px-4 sm:px-8 md:px-16 lg:px-20">
+  <!-- Título + Botón -->
+  <div class="flex flex-row justify-between gap-4">
+    <h2 
+      id="projects-title"
+      class="text-[1.8rem] sm:text-[2.2rem] md:text-[2.5rem] font-BB text-left"
+    >
+      Proyects.
+    </h2>
+    <a href="/proyects"
+      id="projects-btn"
+      class="flex items-center justify-center 
+            text-[1.1rem] sm:text-[1.3rem] lg:text-[1.2rem] 
+            px-4 py-2 sm:px-5 sm:py-3 
+            bg-black/10 tracking-normal font-roboto cursor-none 
+            hover:bg-black hover:text-white 
+            transition-colors rounded-xl 
+            leading-none"
+      >
+      Show more
+    </a>
+  </div>
+
+  <!-- Grid de Proyectos -->
+  <div 
+    id="projects-grid"
+    class="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 mt-10 mb-20"
+  >
+    <!-- Psico App -->
+    <a href="/work/psico" class="group">
+      <div
+        class="imagebg w-full rounded-3xl h-[250px] sm:h-[350px] md:h-[400px] lg:h-[500px] relative overflow-hidden cursor-none"
+      >
+        <style>
+          .imagebg {
+            mask-image: linear-gradient(black 80%, transparent 100%);
+          }
+        </style>
+
+        <div
+          class="absolute inset-0 transition-transform duration-700 group-hover:scale-105 bg-cover bg-center"
+          style="background-image: url('/assets/Psico.webp');"
+        ></div>
+        
+        <div class="absolute inset-0 bg-black/20"></div>
+        <div
+          class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-700 bg-black/60"
+        >
+          <span
+            class="text-white text-xl sm:text-2xl md:text-[3rem] font-fjlla"
+            >Sistema de Psicología</span
+          >
+        </div>
+      </div>
+    </a>
+
+    <!-- Reportes Web -->
+    <a href="work/reports" class="group">
+      <div
+        class="imagebg w-full rounded-3xl h-[250px] sm:h-[350px] md:h-[400px] lg:h-[500px] relative overflow-hidden cursor-none"
+      >
+        <div
+          class="absolute inset-0 transition-transform duration-700 group-hover:scale-105 bg-cover bg-center"
+          style="background-image: url('/assets/Reportes.webp');"
+        ></div>
+        <div class="absolute inset-0 bg-black/20"></div>
+        <div
+          class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-700 bg-black/60"
+        >
+          <span
+            class="text-white text-xl sm:text-2xl md:text-[3rem] font-fjlla"
+            >Sistema de Reportes</span
+          >
+        </div>
+      </div>
+    </a>
+
+    <!-- Landing Page -->
+    <a href="work/landing" class="group">
+      <div
+        class="imagebg w-full rounded-3xl h-[250px] sm:h-[350px] md:h-[400px] lg:h-[500px] relative overflow-hidden cursor-none"
+      >
+        <div
+          class="absolute inset-0 transition-transform duration-700 group-hover:scale-105 bg-cover bg-center"
+          style="background-image: url('/assets/Landing.webp');"
+        ></div>
+        <div class="absolute inset-0 bg-black/20"></div>
+        <div
+          class="absolute inset-0 flex items-center text-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-700 bg-black/60"
+        >
+          <span
+            class="text-white text-xl sm:text-2xl md:text-[3rem] font-fjlla"
+            >Landing Page (Lácteos los andes)</span
+          >
+        </div>
+      </div>
+    </a>
+
+    <!-- Blog Personal -->
+    <a href="work/blog" class="group">
+      <div
+        class="imagebg w-full rounded-3xl h-[250px] sm:h-[350px] md:h-[400px] lg:h-[500px] relative overflow-hidden cursor-none"
+      >
+        <div
+          class="absolute inset-0 transition-transform duration-700 group-hover:scale-105 bg-cover bg-center"
+          style="background-image: url('/assets/blog.webp');"
+        ></div>
+        <div class="absolute inset-0 bg-black/20"></div>
+        <div
+          class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-700 bg-black/60"
+        >
+          <span
+            class="text-white text-xl sm:text-2xl md:text-[3rem] font-fjlla"
+            >Blog La California</span
+          >
+        </div>
+      </div>
+    </a>
+  </div>
+</section>
+
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  import { SplitText } from "gsap/SplitText";
+
+  gsap.registerPlugin(ScrollTrigger, SplitText);
+
+  document.addEventListener("astro:page-load", () => {
+    let ctx = gsap.context(() => {
+
+      // Título con SplitText (más vistoso)
+      const splitTitle = new SplitText("#projects-title", { type: "words" });
+      gsap.from(splitTitle.words, {
+        y: 50,
+        opacity: 0,
+        duration: 0.6,
+        ease: "power3.out",
+        stagger: 0.1,
+        scrollTrigger: {
+          trigger: "#projects-title",
+          start: "top 80%",
+          once: true,
+        },
+      });
+
+      // Botón Show More (independiente, sin margen residual)
+      gsap.from("#projects-btn", {
+        x: 60,
+        opacity: 0,
+        duration: 0.8,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: "#projects-btn",
+          start: "top 85%",
+          once: true,
+        },
+      });
+
+      // Grid de Proyectos (fade + slide up)
+      gsap.from("#projects-grid", {
+        y: 100,
+        opacity: 0,
+        duration: 1.2,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: "#projects-grid",
+          start: "top 90%",
+          once: true,
+        },
+      });
+
+    });
+
+    // Limpieza al cambiar de página (evita transforms residuales)
+    document.addEventListener("astro:before-swap", () => ctx.revert(), { once: true });
+  });
+</script>

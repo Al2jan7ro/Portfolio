@@ -1,0 +1,117 @@
+<footer class="bg-black mt-auto py-12 w-full h-screen flex flex-col cursor-none">
+  <div class="container mx-auto flex flex-col justify-between h-full px-6">
+
+    <!-- Redes sociales -->
+    <div id="footer-socials" class="flex justify-center md:justify-end">
+      <nav>
+        <ul
+          class="cursor-none flex flex-col md:flex-row gap-6 md:space-x-8 text-white text-lg md:text-xl font-Cg2 text-center">
+          <li><a target="_blank" href="https://github.com/Al2jan7ro">Github</a></li>
+          <li><a target="_blank" href="https://www.linkedin.com/in/al2jan7ro">LinkedIn</a></li>
+          <li><a target="_blank" href="https://www.instagram.com/al2jan7ro?igsh=aXVkdWtpZW91dWts">Instagram</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <!-- Texto principal + botón -->
+    <div id="footer-main" class="flex flex-col items-center md:items-start text-center md:text-left mt-10 md:mt-20">
+      <h1 id="footer-title"
+        class="text-white font-BB font-bold text-3xl md:text-[4rem] mb-6 leading-snug">
+        Curious about what we can create together? <br />
+        Let’s bring something extraordinary to life!
+      </h1>
+      <div id="footer-actions" class="flex flex-col sm:flex-row items-center gap-4">
+        <a href="/contact"
+          class="cursor-none text-lg md:text-[1.5rem] font-roboto bg-white text-black px-6 py-3 rounded-xl font-bold hover:bg-gray-500 transition-colors duration-700">
+          Contactame
+        </a>
+        <p class="text-white text-lg md:text-2xl font-roboto">Disponible para trabajar</p>
+      </div>
+    </div>
+
+    <!-- Info final -->
+    <div id="footer-info"
+      class="flex flex-col md:flex-row justify-between items-center gap-6 md:gap-0 mt-10 font-Cg2 text-base md:text-xl">
+      <div class="text-center md:text-left">
+        <p class="text-white">+58 424 580 1160</p>
+        <p class="text-white">ialejandrog15@gmail.com</p>
+        
+      </div>
+      <div class="text-center md:text-right">
+        <p class="text-white">&copy; 2025 Al2jan7ro. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  import { SplitText } from "gsap/SplitText";
+
+  gsap.registerPlugin(ScrollTrigger, SplitText);
+  
+  document.addEventListener("astro:page-load", () => {
+
+ 
+  // Animación del título con SplitText
+  const footerTitle = document.querySelector("#footer-title");
+  if (footerTitle) {
+    const splitFooter = new SplitText(footerTitle, { type: "words,chars" });
+    gsap.from(splitFooter.words, {
+      scrollTrigger: {
+        trigger: "#footer-title",
+        start: "top 100%",
+        toggleActions: "play none none reverse"
+      },
+      duration: 1,
+      y: 20,
+      autoAlpha: 0,
+      filter: "blur(10px)",
+      stagger: 0.05,
+      ease: "power2.out"
+    });
+  }
+
+  // Redes sociales
+  gsap.from("#footer-socials li", {
+    scrollTrigger: {
+      trigger: "#footer-socials",
+      start: "top 90%",
+      toggleActions: "play none none reverse"
+    },
+    y: 30,
+    opacity: 0,
+    duration: 0.6,
+    stagger: 0.2,
+    ease: "power2.out"
+  });
+
+  // Botón + texto debajo del título
+  gsap.from("#footer-actions > *", {
+    scrollTrigger: {
+      trigger: "#footer-actions",
+      start: "top 90%",
+      toggleActions: "play none none reverse"
+    },
+    y: 40,
+    opacity: 0,
+    duration: 0.8,
+    stagger: 0.2,
+    ease: "power3.out"
+  });
+
+  // Info final (correo/teléfono/copyright)
+  gsap.from("#footer-info", {
+    scrollTrigger: {
+      trigger: "#footer-info",
+      start: "top 95%",
+      toggleActions: "play none none reverse"
+    },
+    opacity: 0,
+    y: 30,
+    duration: 1,
+    ease: "power2.out"
+  });
+   });
+</script>

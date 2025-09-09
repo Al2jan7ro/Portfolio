@@ -1,0 +1,86 @@
+<div class="mt-50 mb-50">
+
+    <h2 class="text-[2rem] font-BB font-light ml-4 sm:ml-10 md:ml-20 ">
+        FAQs.
+    </h2>
+
+   <div class="flex flex-col space-y-6 w-full max-w-3xl mx-auto font-Cg2 px-4 ">
+    <!-- Card 1 -->
+    <div class="bg-gray-100 rounded-2xl shadow-lg overflow-hidden">
+        <button
+        class="w-full flex justify-between items-center px-6 py-4 text-xl font-bold font-roboto
+        text-gray-800 focus:outline-none"
+        onclick="toggleCard(1)"
+        >
+        Carta 1
+        <span id="icon-1" class="transition-transform duration-300">+</span>
+        </button>
+        <div
+        id="content-1"
+        class="max-h-0 overflow-hidden transition-all duration-500 ease-in-out px-6"
+        >
+        <p class="py-4 text-gray-600">
+            Este es el contenido de la carta 1. Puedes colocar texto, imágenes o lo
+            que desees aquí.
+        </p>
+        </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="bg-gray-100 rounded-2xl shadow-lg overflow-hidden">
+        <button
+        class="w-full flex justify-between items-center px-6 py-4 text-xl font-bold font-roboto
+         text-gray-800 focus:outline-none"
+        onclick="toggleCard(2)"
+        >
+        Carta 2
+        <span id="icon-2" class="transition-transform duration-300">+</span>
+        </button>
+        <div
+        id="content-2"
+        class="max-h-0 overflow-hidden transition-all duration-500 ease-in-out px-6"
+        >
+        <p class="py-4 text-gray-600">
+            Este es el contenido de la carta 2. Funciona igual que la primera.
+        </p>
+        </div>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="bg-gray-100 rounded-2xl shadow-lg overflow-hidden">
+        <button
+        class="w-full flex justify-between items-center px-6 py-4 text-xl font-bold font-roboto
+         text-gray-800 focus:outline-none"
+        onclick="toggleCard(3)"
+        >
+        Carta 3
+        <span id="icon-3" class="transition-transform duration-300">+</span>
+        </button>
+        <div
+        id="content-3"
+        class="max-h-0 overflow-hidden transition-all duration-500 ease-in-out px-6"
+        >
+        <p class="py-4 text-gray-600">
+            Este es el contenido de la carta 3. También puedes añadir enlaces,
+            botones, etc.
+        </p>
+        </div>
+    </div>
+</div>
+
+<script is:inline>
+  function toggleCard(id) {
+    const content = document.getElementById(`content-${id}`);
+    const icon = document.getElementById(`icon-${id}`);
+
+    if (content.style.maxHeight && content.style.maxHeight !== "0px") {
+      content.style.maxHeight = "0px";
+      icon.textContent = "+";
+    } else {
+      content.style.maxHeight = content.scrollHeight + "px";
+      icon.textContent = "−";
+    }
+  }
+</script>
+
+</div>

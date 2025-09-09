@@ -1,0 +1,194 @@
+
+  <!-- Nombre principal -->
+  <div class="flex flex-col items-center text-center justify-center mt-20 lg:mt-40">
+    <div
+      class="font-BB font-bold 
+            text-[5.5rem] sm:text-[4rem] md:text-[4.5rem] lg:text-[6rem] xl:text-[10rem] 
+            leading-[1.1] sm:leading-[3rem] md:leading-[3.8rem] lg:leading-[9rem] 
+            text-center">
+
+      <h1 id="name-line1">ALEJANDRO</h1>
+      <h1 id="name-line2">GUILLEN</h1>
+
+    </div>
+
+  <div id="cvdw" class="flex flex-col items-center mt-5">
+      <div class="flex gap-2 md:gap-3">
+            <a
+              href="/curriculums/CV_ES.pdf"
+              download="CV_ES.pdf"
+              class="px-3 py-2 rounded-xl shadows-2xl bg-black text-white font-roboto text-[0.9rem] font-bold
+              sm:text-[1rem] md:text-[1.1rem] hover:bg-gray-700 hover:scale-105 transition-transform hover:text-white  duration-700"
+            >
+              Descargar CV ES
+            </a>
+            <a
+              href="/curriculums/CV_EN.pdf"
+              download="CV_EN.pdf"
+              class="px-3 py-2 rounded-xl shadows-2xl  text-white font-roboto text-[0.9rem] font-bold
+              sm:text-[1rem] md:text-[1.1rem] bg-black hover:scale-105 transition-transform hover:bg-gray-700 hover:text-white  duration-700"
+            >
+              Descargar CV EN
+            </a>
+      </div>
+
+      
+       <div class="flex flex-row space-x-4 items-center mt-5">
+      <a href="mailto:ialejandrog15@gmail.com" target="_blank" rel="noopener noreferrer"
+          class="flex items-center justify-center w-12 h-12 rounded-full bg-black text-white shadow-lg hover:bg-red-600 hover:scale-105 transition-transform duration-700">
+          <i class="hgi hgi-stroke hgi-mail-01 text-xl"></i>
+        </a>
+
+        <!-- LinkedIn -->
+        <a href="https://www.linkedin.com/in/al2jan7ro" target="_blank" rel="noopener noreferrer"
+          class="flex items-center justify-center w-12 h-12 rounded-full bg-black text-white shadow-lg hover:bg-blue-700 hover:scale-105 transition-transform duration-700 ">
+          <i class="hgi hgi-stroke hgi-linkedin-01 text-xl"></i>
+        </a>
+
+        <!-- WhatsApp -->
+        <a href="https://wa.me/584245801160?text=Hola!%20quiero%20contactarte%20para%20una%20oferta%20o%20consulta" target="_blank" rel="noopener noreferrer"
+          class="flex items-center justify-center w-12 h-12 rounded-full bg-black text-white shadow-lg hover:bg-green-600 hover:scale-105 transition-transform duration-700">
+          <i class="hgi hgi-stroke hgi-whatsapp text-xl"></i>
+        </a>
+
+        <!-- Github -->
+        <a href="https://github.com/al2jan7ro" target="_blank" rel="noopener noreferrer"
+          class="flex items-center justify-center w-12 h-12 rounded-full bg-black text-white shadow-lg hover:bg-gray-700 hover:scale-105 transition-transform duration-700">
+          <i class="hgi hgi-stroke hgi-github text-xl"></i>
+      </a>
+ </div>
+
+  </div>    
+   
+ 
+
+
+
+  <!-- Sección About -->
+<div>
+  <div class="flex flex-row justify-between gap-4 mt-40 items-center">
+    <h2 id="about-title"
+      class="text-[2rem] flex  font-BB font-light ml-4 sm:ml-10 md:ml-20">
+      About  Me.
+    </h2>
+  </div>
+
+  <div class="px-6 sm:px-8 lg:ml-15 mt-20">
+    <div class="relative max-w-[900px] mx-auto">
+      
+      <!-- Imagen circular con flotado -->
+      <img src="/assets/Me.webp" alt="Alejandro Guillén" id="abt-img"
+        class="w-[155px] h-[220px] sm:w-[260px] sm:h-[260px] lg:w-[300px] lg:h-[300px] 
+               rounded-full float-left mr-8 mb-4 shape-circle" />
+
+      <!-- Texto que rodea la imagen -->
+      <p id="about-text" class="text-[1.6rem] sm:text-xl lg:text-[2rem] font-Cg2 text-justify leading-relaxed">
+        Soy <strong>Alejandro Guillén</strong>, tengo <strong>23 años</strong> y soy de <strong>Venezuela</strong>. 
+        Actualmente espero mi <strong>título como Ingeniero de Sistemas</strong>, construyendo día a día 
+        mi camino profesional. Me considero una persona en <strong>constante aprendizaje</strong>, buscando crecer como un 
+        <strong>profesional más completo</strong> con habilidades en diferentes campos. Mantengo siempre un 
+        <strong>enfoque visual y moderno</strong>, creando soluciones digitales que combinan tecnología, diseño y usabilidad.
+      </p>
+    </div>
+  </div>
+</div>
+
+<style>
+  /* Hace que el texto rodee la imagen de forma circular */
+  .shape-circle {
+    shape-outside: circle();
+    clip-path: circle();
+  }
+</style>
+
+</div>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  import { SplitText } from "gsap/SplitText";
+
+  gsap.registerPlugin(ScrollTrigger, SplitText);
+
+  document.addEventListener("astro:page-load", () => {
+    let ctx = gsap.context(() => {
+      // Nombre principal
+      gsap.from(["#name-line1", "#name-line2"], {
+        y: 120,
+        opacity: 0,
+        duration: 1.2,
+        stagger: 0.2,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: "#name-line1",
+          start: "top 80%",
+          once: true,
+        },
+      });
+
+      // About Me (con SplitText palabra por palabra)
+      const splitAbout = new SplitText("#about-title", { type: "lines" });
+      gsap.from(splitAbout.lines, {
+        yPercent: 120,
+        opacity: 0,
+        stagger: 0.12,
+        duration: 0.8,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: "#about-title",
+          start: "top 85%",
+          once: true,
+        },
+      });
+
+      // Botón CV (independiente)
+      gsap.from("#cv-button", {
+        x: 100,
+        opacity: 0,
+        duration: 1,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: "#cv-button",
+          start: "top 85%",
+          once: true,
+        },
+      });
+
+      gsap.from("#cvdw", {
+      y: 50,
+      opacity: 0,
+      duration: 1.2,
+      delay: 1,
+      ease: "power3.out",
+    });
+
+      // Párrafo About
+      gsap.from("#about-text", {
+        y: 80,
+        opacity: 0,
+        duration: 1.2,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: "#about-text",
+          start: "top 90%",
+          once: true,
+        },
+      });
+
+      gsap.from("#abt-img", {
+        y: 50,
+        opacity: 0,
+        duration: 1.2,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: "#abt-img",
+          start: "top 90%",
+          once: true,
+        },
+      });
+    });
+
+    // Limpieza al cambiar de página
+    document.addEventListener("astro:before-swap", () => ctx.revert(), { once: true });
+  });
+</script>

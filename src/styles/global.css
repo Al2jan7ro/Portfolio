@@ -1,0 +1,86 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: "fjlla";
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+  src: url("/fonts/fjalla400.woff2") format("woff2"),
+}
+
+@font-face {
+  font-family: "BB";
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+  src: url("/fonts/BBRegular.woff2") format("woff2"),;
+}
+@font-face {
+  font-family: "roboto";
+  font-weight: 200;
+  font-style: regular;
+  font-display: swap;   
+  src: url("/fonts/roboto500.woff2") format("woff2"),;
+}
+
+@font-face {
+  font-family: "Cg";
+  font-weight: 700;
+  font-style: regular;
+  font-display: swap;   
+  src: url("/fonts/CGRegular.woff2") format("woff2"),;
+}
+
+@font-face {
+  font-family: "Cg2";
+  font-weight: 500;
+  font-style: regular;
+  font-display: swap;   
+  src: url("/fonts/CGSemibold.woff2") format("woff2"),;
+}
+.font-fjlla {
+  font-family: "fjlla", sans-serif;
+}
+.font-roboto {
+  font-family: "roboto", sans-serif;
+}
+.font-Cg {
+  font-family: "Cg", sans-serif;
+  
+}
+.font-Cg2 {
+  font-family: "Cg2", sans-serif;
+  
+}
+
+.font-BB {
+  font-family: "BB", sans-serif;
+  
+}
+body {
+  font-family: "";
+ 
+}
+
+body,html {
+  cursor: none !important;
+}
+a, button, input, textarea, select, label {
+  cursor: none !important;
+}
+
+@layer utilities {
+  @keyframes glossPulse {
+    0%, 100% {
+      opacity: 0.2; /* tenue */
+    }
+    50% {
+      opacity: 0.7; /* más brillante */
+    }
+  }
+
+  .animate-gloss {
+    animation: glossPulse 3s ease-in-out infinite;
+  }
+}
+

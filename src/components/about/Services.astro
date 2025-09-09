@@ -1,0 +1,49 @@
+<div class="mt-50">
+  <!-- Título -->
+  <h2 id="services-title"
+    class="text-2xl flex sm:text-3xl md:text-3xl font-BB font-light ml-4 sm:ml-10 md:ml-20">
+    Services.
+  </h2>
+
+  <!-- Lista de servicios -->
+  <div id="services-list"
+    class="flex flex-col items-center justify-center font-BB text-[2.5rem] lg:text-[6rem] font-bold italic mt-20">
+    <h1 class="service-item">Web Development</h1>
+    <h1 class="service-item">UI/UX Design</h1>
+    <h1 class="service-item">Systems Development</h1>
+  </div>
+</div>
+
+<script>
+    import { gsap } from "gsap";
+    import { ScrollTrigger } from "gsap/ScrollTrigger";
+document.addEventListener("astro:page-load", () => {
+ 
+gsap.registerPlugin(ScrollTrigger);
+
+// Título "Services."
+gsap.from("#services-title", {
+  x: -80,
+  opacity: 0,
+  duration: 1,
+  ease: "power3.out",
+  scrollTrigger: {
+    trigger: "#services-title",
+    start: "top 85%",
+  }
+});
+
+// Lista de servicios
+gsap.from("#services-list .service-item", {
+  y: 100,
+  opacity: 0,
+  duration: 1.2,
+  ease: "power3.out",
+  stagger: 0.3,
+  scrollTrigger: {
+    trigger: "#services-list",
+    start: "top 85%",
+  }
+});
+   });
+</script>

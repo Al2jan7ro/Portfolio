@@ -1,11 +1,22 @@
 ---
-import Welcome from '../components/Welcome.astro';
+import Header from '../components/header.astro';
+import Hero from '../components/hero.astro';
+import Proyects from '../components/proyects.astro';
+import About from '../components/about.astro';
+import Carousel from '../components/Carrusel.astro';
+import Footer from '../components/footer.astro';	
+import SmokeBG from '../components/smoke.astro';
 import Layout from '../layouts/Layout.astro';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
+<script src="/scripts/extra.js" type="module" is:inline></script>
 
 <Layout>
-	<Welcome />
+	
+	<Header />
+	<Hero />
+	<About />
+	<Proyects />
+	<Carousel />
+	<Footer />
 </Layout>

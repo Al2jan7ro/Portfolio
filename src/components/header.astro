@@ -1,0 +1,61 @@
+---
+import AboutPage from "../pages/about.astro"
+---
+
+<header class="py-6 relative z-50">
+  <div class="container mx-auto px-2 md:px-6 flex flex-row items-center justify-between">
+    <a href="/"
+    class="font-BB text-black text-4xl md:text-5xl ml-3 leading-[1rem]">
+      AL2JAN7RO
+  </a>
+
+    <div class="flex flex-row items-center justify-end flex-1 space-x-4">
+      <!-- NAV DESKTOP -->
+      <nav class="hidden md:block">
+        <ul
+          id="main-nav-desktop"
+          class="opacity-0 pointer-events-none font-Cg2
+            text-black text-2xl flex flex-row space-x-4
+            transition-all duration-700">
+          <li><a href="/" class="">Inicio</a></li>
+          <li><a href="/proyects" class="">Proyectos</a></li>
+          <li><a href="/about" class="">Sobre mi</a></li>
+          <li><a href="/contact" class="">Contacto</a></li>
+        </ul>
+      </nav>
+
+      <!-- BOTÓN HAMBURGUESA -->
+      <button
+        id="menu-toggle"
+        aria-label="Abrir menú"
+        class="cursor-none transition-transform duration-600 hover:scale-125 mr-4 md:ml-4"
+      >
+        <i class="hgi hgi-stroke hgi-arrow-shrink text-3xl"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- NAV MÓVIL (FULL SCREEN) -->
+  <div
+    id="mobile-nav"
+    class="fixed top-0 left-0 w-full h-0 overflow-hidden bg-white flex flex-col items-center justify-center
+           transition-all duration-700 ease-in-out md:hidden ">
+    
+    <!-- Botón cerrar SOLO en móvil -->
+    <button id="close-menu" class="absolute top-6 right-6 text-black text-4xl">
+      <i class="hgi hgi-stroke hgi-cancel-01"></i>
+    </button>
+
+    <ul class="flex flex-col space-y-6 text-3xl font-Cg2 font-bold text-black text-center font-roboto">
+     
+    <li>
+
+    </li>
+    
+      <li><a href="/" class="">Inicio</a></li>
+      <li><a href="/proyects" class="">Proyectos</a></li>
+      <li><a href="/about" class="">Sobre mi</a></li>
+      <li><a href="/contact" class="">Contacto</a></li>
+    </ul>
+  </div>
+</header>
