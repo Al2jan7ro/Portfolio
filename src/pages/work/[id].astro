@@ -13,7 +13,7 @@ export function getStaticPaths() {
 const { id } = Astro.props;
 const Project = projects[id];
 ---
-
+<script src="/scripts/Bento.js" type="module" is:inline></script>
 <Layout
   title={Project?.title || "Proyecto"}
   description={Project?.description || "Detalles del proyecto"}
