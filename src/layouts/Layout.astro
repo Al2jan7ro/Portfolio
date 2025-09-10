@@ -2,45 +2,59 @@
 import '/src/styles/global.css'
 import { ClientRouter } from "astro:transitions";
 import SmokeBG from "../components/smoke.astro";
+import SEO from "../components/SEO.astro";
+import Analytics from '@vercel/analytics/astro'
+
+interface Props {
+  title: string;
+  description: string;
+  canonical?: string;
+  image?: string;
+}
+
+const { title, description, canonical, image } = Astro.props as Props;
 ---
 
 <!doctype html>
 <html lang="es">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" class="text-2xl"type="image/svg+xml" href="/favicon.png" />
-    <title>AL2JAN7RO</title>
+    <SEO
+      title={title}
+      description={description}
+      canonical={canonical}
+      image={image}
+    />
 
-    <!-- Hugeicons -->
+    
+    <link rel="icon" type="image/svg+xml" href="/favicon.png" class="text-2xl" />
     <link rel="stylesheet" href="https://cdn.hugeicons.com/font/hgi-stroke-rounded.css" />
     <ClientRouter />
   </head>
 
   <body class="flex flex-col min-h-screen relative ">
-    <!-- Contenido dinámico -->
      
     <SmokeBG transition:persist  />
     <slot />
+    <Analytics />
      
     <div id="float-buttons" class="fixed bottom-6 right-6 flex flex-col items-center gap-4 z-50">
   
 
   <!-- Botones flotantes ocultos por defecto (suben hacia arriba) -->
   <div id="floating-items" class="flex flex-col-reverse items-center gap-4 transform translate-y-4 opacity-0 pointer-events-none transition-all duration-300">
-    <!-- Gmail -->
+ 
     <a href="mailto:ialejandrog15@gmail.com" target="_blank" rel="noopener noreferrer"
        class="flex items-center justify-center w-12 h-12 rounded-full bg-black border border-white text-white shadow-lg hover:bg-red-600 transition-colors">
       <i class="hgi hgi-stroke hgi-mail-01 text-xl"></i>
     </a>
 
-    <!-- LinkedIn -->
+ 
     <a href="https://www.linkedin.com/in/al2jan7ro" target="_blank" rel="noopener noreferrer"
        class="flex items-center justify-center w-12 h-12 rounded-full bg-black border border-white text-white shadow-lg hover:bg-blue-700 transition-colors">
       <i class="hgi hgi-stroke hgi-linkedin-01 text-xl"></i>
     </a>
 
-    <!-- WhatsApp -->
+ 
     <a href="https://wa.me/584245801160?text=Hola!%20quiero%20contactarte%20para%20una%20oferta%20o%20consulta" target="_blank" rel="noopener noreferrer"
        class="flex items-center justify-center w-12 h-12 rounded-full bg-black border border-white text-white shadow-lg hover:bg-green-600 transition-colors">
       <i class="hgi hgi-stroke hgi-whatsapp text-xl"></i>
@@ -86,7 +100,7 @@ document.addEventListener("astro:page-load", () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   });
 
-  // Toggle botones flotantes hacia arriba
+ 
   toggleBtn.addEventListener("click", () => {
     if (!open) {
       floatingItems.classList.remove("translate-y-4", "opacity-0", "pointer-events-none");
@@ -102,7 +116,7 @@ document.addEventListener("astro:page-load", () => {
 </script>
 
 
-    <!-- Scripts globales -->
+    
     <script src="/scripts/menu.js" type="module"></script>
     <script src="/scripts/cursor.js" type="module"></script>
 

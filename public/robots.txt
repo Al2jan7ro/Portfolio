@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://al2jan7ro.vercel.app/sitemap-index.xml
+Host: https://al2jan7ro.vercel.app

@@ -1,22 +1,23 @@
 ---
+import Layout from '../layouts/Layout.astro';
 import Header from '../components/header.astro';
 import Hero from '../components/hero.astro';
 import Proyects from '../components/proyects.astro';
 import About from '../components/about.astro';
 import Carousel from '../components/Carrusel.astro';
 import Footer from '../components/footer.astro';	
-import SmokeBG from '../components/smoke.astro';
-import Layout from '../layouts/Layout.astro';
-
 ---
-<script src="/scripts/extra.js" type="module" is:inline></script>
 
-<Layout>
-	
-	<Header />
-	<Hero />
-	<About />
-	<Proyects />
-	<Carousel />
-	<Footer />
+<Layout
+  title="Portafolio web de Alejandro Guillen"
+  description="Portafolio web de Alejandro Guillen, Ingeniero de sistemas, desarrolador FrontEnd y UI/UX"
+  canonical="/"
+  image="/default-og.webp"
+>
+  <Header />
+  <Hero />
+  <About />
+  <Proyects />
+  <Carousel />
+  <Footer />
 </Layout>

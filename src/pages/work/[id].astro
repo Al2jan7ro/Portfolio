@@ -5,25 +5,24 @@ import Footer from "../../components/footer.astro";
 
 import { projects, getProjectPaths } from "../../data/projects";
 
-// Astro necesita esta función para las rutas dinámicas
+// Rutas dinámicas
 export function getStaticPaths() {
-  return getProjectPaths(); //entregamos las rutas dinamicas declaradas en data/projects.ts
+  return getProjectPaths();
 }
 
-const { id } = Astro.props; //le pasamos las id
-const Project = projects[id]; // basado en el id busca el componente correspondiente
+const { id } = Astro.props;
+const Project = projects[id];
 ---
 
-<Layout>
+<Layout
+  title={Project?.title || "Proyecto"}
+  description={Project?.description || "Detalles del proyecto"}
+  canonical={`/work/${id}`}
+  image={Project?.image || "/default-og.webp"}
+>
   <Header />
 
-  {Project 
-    ? <Project /> //renderiza el componente en la pagina
-    : <p class="text-center text-2xl py-20">Proyecto no encontrado</p>
-  }
+  {Project?.component ? <Project.component /> : <p class="text-center text-2xl py-20">Proyecto no encontrado</p>}
 
   <Footer />
 </Layout>
-
-<script src="/scripts/cursor.js" type="module"></script>
-<script src="/scripts/Bento.js" type="module"></script>

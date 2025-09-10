@@ -1,0 +1,33 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  canonical?: string;
+  image?: string;
+}
+
+const { title, description, canonical, image = "/default-og.webp" } = Astro.props as Props;
+
+const siteBase = Astro.site || "";
+const canonicalHref = canonical
+  ? (canonical.startsWith("http") ? canonical : new URL(canonical, siteBase).toString())
+  : new URL(Astro.url.pathname, siteBase).toString();
+
+const imageUrl = image.startsWith("http") ? image : new URL(image, siteBase).toString();
+---
+
+<title>{title}</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content={description} />
+<link rel="canonical" href={canonicalHref} />
+
+<!-- Open Graph -->
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={imageUrl} />
+<meta property="og:url" content={canonicalHref} />
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="es_ES" />
+
+<meta name="robots" content="index, follow" />
