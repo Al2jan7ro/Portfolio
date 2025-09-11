@@ -5,136 +5,120 @@
 </div>
 
 <script>
-    // 1. Definimos los tipos de datos para evitar errores de TypeScript
-    // Es buena práctica definir una interfaz para la partícula.
-    interface Particle {
-        x: number;
-        y: number;
-        size: number;
-        opacity: number;
-        rotation: number;
-        rotationSpeed: number;
-        reset(canvas: HTMLCanvasElement): void;
-        update(): void;
-        draw(ctx: CanvasRenderingContext2D, smokeImage: HTMLImageElement): void;
+  interface Particle {
+    x: number;
+    y: number;
+    size: number;
+    opacity: number;
+    rotation: number;
+    rotationSpeed: number;
+    reset(canvas: HTMLCanvasElement): void;
+    update(): void;
+    draw(ctx: CanvasRenderingContext2D, smokeImage: HTMLImageElement): void;
+  }
+
+  // Usamos un singleton global para mantener la animación
+  (window as any)._smokeAnimation = (window as any)._smokeAnimation || {
+    raf: 0,
+    particles: [] as Particle[],
+    canvas: null as HTMLCanvasElement | null,
+    ctx: null as CanvasRenderingContext2D | null,
+    smokeImage: null as HTMLImageElement | null,
+    initialized: false
+  };
+
+  const smoke = (window as any)._smokeAnimation;
+
+  function initSmokeAnimation() {
+    if (smoke.initialized) return; // Solo inicializar una vez
+    smoke.initialized = true;
+
+    smoke.canvas = document.getElementById("smoke-canvas") as HTMLCanvasElement;
+    if (!smoke.canvas) return;
+
+    smoke.ctx = smoke.canvas.getContext("2d");
+    if (!smoke.ctx) return;
+
+    smoke.canvas.width = window.innerWidth;
+    smoke.canvas.height = window.innerHeight + 100;
+
+    const NUM_PARTICLES = 15;
+    const fps = 30;
+    const fpsInterval = 1000 / fps;
+    let then = Date.now();
+
+    smoke.smokeImage = new Image();
+    smoke.smokeImage.src = "/assets/smoke.webp";
+
+    class Particle implements Particle {
+      x!: number;
+      y!: number;
+      size!: number;
+      opacity!: number;
+      rotation!: number;
+      rotationSpeed!: number;
+
+      constructor() { this.reset(smoke.canvas!); }
+
+      reset(canvas: HTMLCanvasElement) {
+        this.x = Math.random() * canvas.width * 2 - canvas.width * 0.5;
+        this.y = Math.random() * canvas.height * 2 - canvas.height * 0.5;
+        this.size = Math.random() * 900 + 800;
+        this.opacity = Math.random() * 0.65 + 0.15;
+        this.rotation = Math.random() * Math.PI * 2;
+        this.rotationSpeed = Math.random() * 0.003 + 0.001;
+      }
+
+      update() { this.rotation += this.rotationSpeed; }
+
+      draw(ctx: CanvasRenderingContext2D, smokeImage: HTMLImageElement) {
+        ctx.save();
+        ctx.translate(this.x + this.size / 2, this.y + this.size / 2);
+        ctx.rotate(this.rotation);
+        ctx.globalAlpha = this.opacity;
+        ctx.drawImage(smokeImage, -this.size / 2, -this.size / 2, this.size, this.size);
+        ctx.globalAlpha = 1;
+        ctx.restore();
+      }
     }
 
-    let raf: number;
-    let particles: Particle[] = [];
-    let canvas: HTMLCanvasElement | null = null;
-    let ctx: CanvasRenderingContext2D | null = null;
-    let smokeImage: HTMLImageElement;
+    function initParticles() {
+      smoke.particles.length = 0;
+      for (let i = 0; i < NUM_PARTICLES; i++) smoke.particles.push(new Particle());
+    }
 
-    // 2. Función para inicializar la animación
-    function initSmokeAnimation() {
-        canvas = document.getElementById("smoke-canvas") as HTMLCanvasElement;
-        
-        // Evita doble inicialización y errores si el elemento no existe
-        if (!canvas || canvas.dataset.initialized === "true") return;
-        canvas.dataset.initialized = "true";
-
-        ctx = canvas.getContext("2d");
-        if (!ctx) return; // Si no hay contexto 2D, salimos.
-
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight + 100;
-
-        const NUM_PARTICLES = 15;
-        const fps = 30;
-        const fpsInterval = 1000 / fps;
-        let then = Date.now();
-
-        // Carga la textura del humo
-        smokeImage = new Image();
-        smokeImage.src = "/assets/smoke.webp";
-
-        // 3. Clase 'Particle' con tipado explícito
-        class Particle implements Particle {
-            x!: number;
-            y!: number;
-            size!: number;
-            opacity!: number;
-            rotation!: number;
-            rotationSpeed!: number;
-
-            constructor() { 
-                this.reset(canvas as HTMLCanvasElement); 
-            }
-
-            reset(canvas: HTMLCanvasElement) {
-                this.x = Math.random() * canvas.width * 2 - canvas.width * 0.5;
-                this.y = Math.random() * canvas.height * 2 - canvas.height * 0.5;
-                this.size = Math.random() * 1500 + 1300;
-                this.opacity = Math.random() * 0.4 + 0.2;
-                this.rotation = Math.random() * Math.PI * 3;
-                this.rotationSpeed = Math.random() * 0.003 + 0.001;
-            }
-
-            update() { 
-                this.rotation += this.rotationSpeed; 
-            }
-            
-            draw(ctx: CanvasRenderingContext2D, smokeImage: HTMLImageElement) {
-                ctx.save();
-                ctx.translate(this.x + this.size / 2, this.y + this.size / 2);
-                ctx.rotate(this.rotation);
-                ctx.globalAlpha = this.opacity;
-                ctx.filter = "brightness(60%) contrast(20%)";
-                ctx.drawImage(smokeImage, -this.size / 2, -this.size / 2, this.size, this.size);
-                ctx.filter = "none";
-                ctx.globalAlpha = 1.0;
-                ctx.restore();
-            }
-        }
-
-        function init() {
-            particles.length = 0;
-            for (let i = 0; i < NUM_PARTICLES; i++) {
-                particles.push(new Particle());
-            }
-        }
-
-        function handleParticles() {
-            if (!ctx) return; // Aseguramos que ctx no es null
-            for (let i = 0; i < particles.length; i++) {
-                particles[i].update();
-                particles[i].draw(ctx, smokeImage);
-            }
-        }
-
-        function animate() {
-            raf = requestAnimationFrame(animate);
-            const now = Date.now();
-            const elapsed = now - then;
-            if (elapsed > fpsInterval) {
-                then = now - (elapsed % fpsInterval);
-                if (ctx && canvas) {
-                    ctx.clearRect(0, 0, canvas.width, canvas.height);
-                    handleParticles();
-                }
-            }
-        }
-
-        const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-        if (!reducedMotion.matches) {
-            window.addEventListener("resize", () => {
-                if (canvas) {
-                    canvas.width = window.innerWidth;
-                    canvas.height = window.innerHeight + 100;
-                }
+    function animate() {
+      smoke.raf = requestAnimationFrame(animate);
+      const now = Date.now();
+      const elapsed = now - then;
+      if (elapsed > fpsInterval && smoke.ctx && smoke.canvas && smoke.smokeImage) {
+        then = now - (elapsed % fpsInterval);
+        smoke.ctx.clearRect(0, 0, smoke.canvas.width, smoke.canvas.height);
+        smoke.particles.forEach((p: Particle) => {
+            p.update();
+            p.draw(smoke.ctx!, smoke.smokeImage!);
             });
 
-            smokeImage.onload = () => {
-                init();
-                animate();
-            };
-        }
+      }
     }
 
-    // 4. Lógica de limpieza para transiciones de Astro
-    document.addEventListener("astro:page-load", initSmokeAnimation);
-    document.addEventListener("astro:before-swap", () => {
-        // Limpiamos raf antes de la transición para evitar múltiples animaciones
-        if (raf) cancelAnimationFrame(raf);
-    });
+    // Pausar si el usuario prefiere motion reducido
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    if (!reducedMotion.matches) {
+      window.addEventListener("resize", () => {
+        if (smoke.canvas) {
+          smoke.canvas.width = window.innerWidth;
+          smoke.canvas.height = window.innerHeight + 100;
+        }
+      });
+
+      smoke.smokeImage.onload = () => {
+        initParticles();
+        animate();
+      };
+    }
+  }
+
+  // Inicializa en cada carga de página, pero solo ejecuta realmente 1 vez
+  document.addEventListener("astro:page-load", initSmokeAnimation);
 </script>

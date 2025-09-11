@@ -128,6 +128,9 @@
 
   document.addEventListener("astro:page-load", () => {
     let ctx = gsap.context(() => {
+
+    document.fonts.ready.then(() => {
+
       // 🔹 SplitText en título y subtítulo
       const titleSplit = new SplitText("#skills-title", { type: "chars" });
       const subtitleSplit = new SplitText("#skills-subtitle", { type: "words" });
@@ -155,7 +158,7 @@
           start: "top 85%",
         },
       });
-
+     });
           gsap.utils.toArray<HTMLElement>(".card-skill").forEach((card, i) => {
             gsap.from(card, {
               y: 50,

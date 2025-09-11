@@ -12,7 +12,7 @@
       class="flex items-center justify-center 
             text-[1.1rem] sm:text-[1.3rem] lg:text-[1.2rem] 
             px-4 py-2 sm:px-5 sm:py-3 
-            bg-black/10 tracking-normal font-roboto cursor-none 
+            bg-black/10 tracking-normal font-Cg2 cursor-none 
             hover:bg-black hover:text-white 
             transition-colors rounded-xl 
             leading-none"
@@ -40,7 +40,7 @@
         <div class="absolute inset-0 flex flex-col items-center justify-center
                     opacity-100 lg:opacity-0 group-hover:opacity-100 transition-opacity duration-700
                     text-center p-4">
-          <span class="text-white text-[2rem] sm:text-2xl md:text-[3rem] font-fjlla">
+          <span class="text-white text-[2rem] sm:text-2xl md:text-[3rem] font-Cg2">
             Sistema de Psicología
           </span>
           <p class="text-white text-sm sm:text-base lg:hidden mt-2">
@@ -60,7 +60,7 @@
         <div class="absolute inset-0 flex flex-col items-center justify-center
                     opacity-100 lg:opacity-0 group-hover:opacity-100 transition-opacity duration-700
                     text-center p-4">
-          <span class="text-white text-[2rem] sm:text-2xl md:text-[3rem] font-fjlla">
+          <span class="text-white text-[2rem] sm:text-2xl md:text-[3rem] font-Cg2">
             Sistema de Reportes
           </span>
           <p class="text-white text-sm sm:text-base lg:hidden mt-2">
@@ -80,7 +80,7 @@
         <div class="absolute inset-0 flex flex-col items-center justify-center
                     opacity-100 lg:opacity-0 group-hover:opacity-100 transition-opacity duration-700
                     text-center p-4">
-          <span class="text-white text-[2rem] sm:text-2xl md:text-[3rem] font-fjlla">
+          <span class="text-white text-[2rem] sm:text-2xl md:text-[3rem] font-Cg2">
             Landing Page (Lácteos los Andes)
           </span>
           <p class="text-white text-sm sm:text-base lg:hidden mt-2">
@@ -100,7 +100,7 @@
         <div class="absolute inset-0 flex flex-col items-center justify-center
                     opacity-100 lg:opacity-0 group-hover:opacity-100 transition-opacity duration-700
                     text-center p-4">
-          <span class="text-white text-[2rem] sm:text-2xl md:text-[3rem] font-fjlla">
+          <span class="text-white text-[2rem] sm:text-2xl md:text-[3rem] font-Cg2">
             Blog La California
           </span>
           <p class="text-white text-sm sm:text-base lg:hidden mt-2">
@@ -123,6 +123,7 @@
   document.addEventListener("astro:page-load", () => {
     let ctx = gsap.context(() => {
 
+       document.fonts.ready.then(() => {
       // Título con SplitText (más vistoso)
       const splitTitle = new SplitText("#projects-title", { type: "words" });
       gsap.from(splitTitle.words, {
@@ -137,7 +138,7 @@
           once: true,
         },
       });
-
+   });
       // Botón Show More (independiente, sin margen residual)
       gsap.from("#projects-btn", {
         x: 60,

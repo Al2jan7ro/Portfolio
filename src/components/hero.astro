@@ -8,7 +8,8 @@
              leading-[1.1] sm:leading-[3rem] md:leading-[3.8rem] lg:leading-[5rem] 
              flex-1 text-center md:text-left mt-6 md:mt-10"
     >
-      <h1 class="hero-title shadows-2xl flex flex-col items-center md:flex-row md:items-center md:justify-between flex-wrap">
+      <h1 class="hero-title shadows-2xl flex flex-col items-center md:flex-row md:items-center
+       md:justify-between flex-wrap">
         <span class="order-2 md:order-1">Alejandro</span>
         <img
           src="/assets/Me.webp"
@@ -32,7 +33,7 @@
     <a
       href="/curriculums/CV_ES.pdf"
       download="CV_ES.pdf"
-      class="px-3 py-2 rounded-xl shadows-2xl bg-black text-white font-roboto text-[0.9rem] font-bold
+      class="px-3 py-2 rounded-xl shadows-2xl bg-black text-white font-Cg2 text-[1rem] font-bold
       sm:text-[1rem] md:text-[1.1rem] hover:bg-gray-700 hover:scale-105 transition-transform hover:text-white  duration-700"
     >
       Descargar CV ES
@@ -40,14 +41,14 @@
     <a
       href="/curriculums/CV_EN.pdf"
       download="CV_EN.pdf"
-      class="px-3 py-2 rounded-xl shadows-2xl  text-white font-roboto text-[0.9rem] font-bold
+      class="px-3 py-2 rounded-xl shadows-2xl  text-white font-Cg2 text-[1rem] font-bold
       sm:text-[1rem] md:text-[1.1rem] bg-black hover:scale-105 transition-transform hover:bg-gray-700 hover:text-white  duration-700"
     >
       Descargar CV EN
     </a>
   </div>
 
- <div class="flex flex-row space-x-4 items-center">
+ <div class="flex flex-row space-x-4 items-center lg:mt-0 mt-5">
       <a href="mailto:ialejandrog15@gmail.com" target="_blank" rel="noopener noreferrer"
           class="flex items-center justify-center w-12 h-12 rounded-full bg-black text-white shadow-lg hover:bg-red-600 hover:scale-105 transition-transform duration-700">
           <i class="hgi hgi-stroke hgi-mail-01 text-xl"></i>
@@ -96,36 +97,47 @@
   import gsap from "gsap";
   import { ScrollTrigger } from "gsap/ScrollTrigger";
   import { SplitText } from "gsap/SplitText";
+  gsap.config({nullTargetWarn: false});
 
   document.addEventListener("astro:page-load", () => {
     gsap.registerPlugin(ScrollTrigger, SplitText);
 
+    document.fonts.ready.then(() => {
     // Animación de los títulos principales
     const heroTitle = new SplitText(".hero-title span", {
       type: "words,lines",
     });
-    gsap.from(heroTitle.lines, {
-      yPercent: 100,
-      opacity: 0,
-      stagger: 0.1,
-      duration: 0.8,
-      ease: "power3.out",
-    });
 
-    const heroSubtitle = new SplitText(".hero-subtitle", {
-      type: "words,lines",
-    });
-    gsap.from(heroSubtitle.lines, {
-      yPercent: 100,
-      opacity: 0,
-      stagger: 0.1,
-      duration: 0.8,
-      ease: "power3.out",
-      delay: 0.5,
+      if (heroTitle.lines) {
+        gsap.from(heroTitle.lines, {
+        yPercent: 100,
+        opacity: 0,
+        stagger: 0.1,
+        duration: 0.8,
+        ease: "power3.out",
+      });
+      }
+  
+
+      const heroSubtitle = new SplitText(".hero-subtitle", {
+        type: "words,lines",
+      });
+      if (heroSubtitle.lines) {
+        gsap.from(heroSubtitle.lines, {
+        yPercent: 100,
+        opacity: 0,
+        stagger: 0.1,
+        duration: 0.8,
+        ease: "power3.out",
+        delay: 0.5,
+      });
+      }
     });
 
     // Animación de la descripción sin romper la justificación
-    gsap.from(".hero-desc", {
+    const desc = document.querySelector(".hero-desc");
+    if (desc) {
+      gsap.from(".hero-desc", {
       opacity: 0,
       y: 50,
       duration: 1.2,
@@ -136,23 +148,31 @@
         start: "top 100%",
       },
     });
+    }
+    
 
     // Animación de imagen con rebote
-    gsap.from(".hero-title img", {
+    const img = document.querySelector(".hero-title img");
+    if (img) {
+       gsap.from(".hero-title img", {
       scale: 0,
       rotate: -45,
       duration: 1,
       ease: "back.out(1.7)",
       delay: 0.5,
     });
-
-    // Animar el correo
-    gsap.from("#myinfo", {
+    }
+   
+    const myinfo = document.querySelector("#myinfo");
+    if (myinfo) {
+      gsap.from("#myinfo", {
       y: 50,
       opacity: 0,
       duration: 1.2,
       delay: 1,
       ease: "power3.out",
     });
+    }
+    
   });
 </script>

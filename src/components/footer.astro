@@ -22,7 +22,7 @@
       </h1>
       <div id="footer-actions" class="flex flex-col sm:flex-row items-center gap-4">
         <a href="/contact"
-          class="cursor-none text-lg md:text-[1.5rem] font-roboto bg-white text-black px-6 py-3 rounded-xl font-bold hover:bg-gray-500 transition-colors duration-700">
+          class="cursor-none text-lg md:text-[1.5rem] font-Cg2 bg-white text-black px-6 py-3 rounded-xl font-bold hover:bg-gray-500 transition-colors duration-700">
           Contactame
         </a>
         <p class="text-white text-lg md:text-2xl font-roboto">Disponible para trabajar</p>
@@ -53,26 +53,26 @@
   
   document.addEventListener("astro:page-load", () => {
 
- 
+  document.fonts.ready.then(() => {
   // Animación del título con SplitText
-  const footerTitle = document.querySelector("#footer-title");
-  if (footerTitle) {
-    const splitFooter = new SplitText(footerTitle, { type: "words,chars" });
-    gsap.from(splitFooter.words, {
-      scrollTrigger: {
-        trigger: "#footer-title",
-        start: "top 100%",
-        toggleActions: "play none none reverse"
-      },
-      duration: 1,
-      y: 20,
-      autoAlpha: 0,
-      filter: "blur(10px)",
-      stagger: 0.05,
-      ease: "power2.out"
-    });
-  }
-
+    const footerTitle = document.querySelector("#footer-title");
+    if (footerTitle) {
+      const splitFooter = new SplitText(footerTitle, { type: "words,chars" });
+      gsap.from(splitFooter.words, {
+        scrollTrigger: {
+          trigger: "#footer-title",
+          start: "top 100%",
+          toggleActions: "play none none reverse"
+        },
+        duration: 1,
+        y: 20,
+        autoAlpha: 0,
+        filter: "blur(10px)",
+        stagger: 0.05,
+        ease: "power2.out"
+      });
+    }
+ });
   // Redes sociales
   gsap.from("#footer-socials li", {
     scrollTrigger: {

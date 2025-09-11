@@ -1,26 +1,11 @@
 @import "tailwindcss";
 
 @font-face {
-  font-family: "fjlla";
-  font-weight: 100;
-  font-style: normal;
-  font-display: swap;
-  src: url("/fonts/fjalla400.woff2") format("woff2"),
-}
-
-@font-face {
   font-family: "BB";
   font-weight: 100;
   font-style: normal;
   font-display: swap;
   src: url("/fonts/BBRegular.woff2") format("woff2"),;
-}
-@font-face {
-  font-family: "roboto";
-  font-weight: 200;
-  font-style: regular;
-  font-display: swap;   
-  src: url("/fonts/roboto500.woff2") format("woff2"),;
 }
 
 @font-face {
@@ -38,12 +23,9 @@
   font-display: swap;   
   src: url("/fonts/CGSemibold.woff2") format("woff2"),;
 }
-.font-fjlla {
-  font-family: "fjlla", sans-serif;
-}
-.font-roboto {
-  font-family: "roboto", sans-serif;
-}
+
+
+
 .font-Cg {
   font-family: "Cg", sans-serif;
   
@@ -58,8 +40,8 @@
   
 }
 body {
-  font-family: "";
- 
+    font-family: "Cg2", sans-serif;
+
 }
 
 body,html {
