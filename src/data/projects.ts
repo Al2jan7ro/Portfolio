@@ -20,19 +20,19 @@ export const projects: Record<string, ProjectData> = {
 
   reports: { 
     component: Reports, 
-    title: "Sistema Reportes", 
-    description: "Plataforma de gestión de reportes migrada a Astro con backend en NestJS.",
+    title: "Sistema de Reportes Lactéos Los Andes - Planta Cabudare, Estado Lara",
+    description: "Plataforma de gestión de reportes desarrollada con Astro con backend en NestJS.",
     image: "/assets/Reportes.webp" },
 
   landing: { 
     component: Landing, 
-    title: "Landing Lácteos", 
+    title: "Landing del departamento de sistemas Lácteos los Andes - Planta Cabudare, Estado Lara",
     description: "Landing page para el departamento de sistemas de lácteos los andes.",
     image: "/assets/Landing.webp" },
 
   blog: { 
     component: Blog, 
-    title: "Blog La California", 
+    title: "Blog La California, Comunidad de Barquisimeto", 
     description: "Blog informativo con diseño personalizado para una comunidad local.",
     image: "/assets/Blog.webp" },
 };

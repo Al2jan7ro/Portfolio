@@ -1,32 +1,28 @@
 document.addEventListener("astro:page-load", () => {
-  // Solo activar si la resolución es >= 1280px (xl en Tailwind)
   if (window.innerWidth >= 1280) {
-    // Crear el div del cursor
     const cursor = document.createElement("div");
     cursor.id = "custom-cursor";
     cursor.className =
       "fixed top-0 left-0 w-8 h-8 rounded-full pointer-events-none z-[9999] transition-transform duration-150 ease-out";
     document.body.appendChild(cursor);
 
-    // Color inicial y mezcla
+    // Estilos básicos (para Firefox)
     cursor.style.backgroundColor = "white";
+    cursor.style.border = "1px solid black"; // 🔹 asegura visibilidad
     cursor.style.mixBlendMode = "difference";
 
     let mouseX = 0;
     let mouseY = 0;
     let isHovering = false;
 
-    // Seguir el movimiento del mouse
     document.addEventListener("mousemove", (e) => {
       mouseX = e.clientX - 8;
       mouseY = e.clientY - 8;
-
-      const scale = isHovering ? 2 : 1; // tamaño más grande al hacer hover
+      const scale = isHovering ? 2 : 1;
       cursor.style.transform = `translate(${mouseX}px, ${mouseY}px) scale(${scale})`;
     });
 
-    // Detectar elementos clickeables
-    const hoverable = ["a","img", "button", "input", "textarea", "select", "[role='button']"];
+    const hoverable = ["a","img","button","input","textarea","select","[role='button']"];
 
     hoverable.forEach((selector) => {
       document.querySelectorAll(selector).forEach((el) => {

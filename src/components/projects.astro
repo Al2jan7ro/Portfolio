@@ -1,39 +1,40 @@
-<section class="mt-20 px-4 sm:px-8 md:px-16 lg:px-20">
-  <!-- Título + Botón -->
-  <div class="flex flex-row justify-between gap-4">
-    <h2 
-      id="projects-title"
-      class="text-[1.8rem] sm:text-[2.2rem] md:text-[2.5rem] font-BB text-left"
-    >
-      Proyects.
+<section class="mt-20">
+
+ <div class="flex flex-row justify-between gap-4 px-4 sm:px-8 md:px-16 lg:px-20">
+    <h2 id="projcts-title"
+      class="text-[1.8rem] sm:text-[2.2rem] md:text-[2.5rem] font-BB text-lef">
+     Projects.
     </h2>
-    <a href="/proyects"
-      id="projects-btn"
-      class="flex items-center justify-center 
-            text-[1.1rem] sm:text-[1.3rem] lg:text-[1.2rem] 
-            px-4 py-2 sm:px-5 sm:py-3 
-            bg-black/10 tracking-normal font-Cg2 cursor-none 
-            hover:bg-black hover:text-white 
-            transition-colors rounded-xl 
-            leading-none"
-      >
-      Show more
-    </a>
-  </div>
+    
+      <a href="/projects"
+        id="projcts-btn"
+        class="flex items-center justify-center 
+              text-[1.1rem] sm:text-[1.3rem] lg:text-[1.2rem] 
+              px-4 py-2 sm:px-5 sm:py-3 
+              bg-black/10 tracking-normal font-Cg2 cursor-none 
+              hover:bg-black hover:text-white 
+              transition-colors rounded-xl 
+              leading-none"
+        >
+        Show more
+      </a>
+    </div>
+  
 
   <!-- Grid de Proyectos -->
   <div 
     id="projects-grid"
-    class="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 mt-10 mb-20"
+    class="grid grid-cols-1 sm:grid-cols-2 gap-6 px-4 sm:px-8 md:px-16 lg:px-20 sm:gap-8 mt-10 mb-20"
   >
     <!-- Psico App -->
     <a href="/work/psico" class="group">
       <div class="imagebg w-full rounded-3xl h-[250px] sm:h-[350px] md:h-[400px] lg:h-[500px] relative overflow-hidden cursor-none">
         
-        <div class="absolute inset-0 transition-transform duration-700 group-hover:scale-105 bg-cover bg-center"
-             style="background-image: url('/assets/Psico.webp');"></div>
+        <img src="/assets/Psico.webp" alt="Sistema de psicología realizado como proyecto para una psicologa en la Universidad UNEFA" 
+             class="absolute inset-0 w-full h-full object-cover transition-transform 
+             duration-700 group-hover:scale-105" />
 
-        <!-- Overlay: siempre visible en móvil, más oscuro en desktop -->
+        <!-- Overlay -->
         <div class="absolute inset-0 bg-black/70 lg:bg-black/50 lg:group-hover:bg-black/70 transition-colors duration-700"></div>
         
         <!-- Contenido -->
@@ -54,8 +55,10 @@
     <a href="work/reports" class="group">
       <div class="imagebg w-full rounded-3xl h-[250px] sm:h-[350px] md:h-[400px] lg:h-[500px] relative overflow-hidden cursor-none">
         
-        <div class="absolute inset-0 transition-transform duration-700 group-hover:scale-105 bg-cover bg-center"
-             style="background-image: url('/assets/Reportes.webp');"></div>
+        <img src="/assets/Reportes.webp" alt="Sistema de Reportes para la empresa de Lácteos los Andes, Planta Cabudare, Barquisimeto - Venezuela"
+             class="absolute inset-0 w-full h-full object-cover 
+             transition-transform duration-700 group-hover:scale-105" />
+
         <div class="absolute inset-0 bg-black/70 lg:bg-black/50 lg:group-hover:bg-black/70 transition-colors duration-700"></div>
         <div class="absolute inset-0 flex flex-col items-center justify-center
                     opacity-100 lg:opacity-0 group-hover:opacity-100 transition-opacity duration-700
@@ -74,8 +77,11 @@
     <a href="work/landing" class="group">
       <div class="imagebg w-full rounded-3xl h-[250px] sm:h-[350px] md:h-[400px] lg:h-[500px] relative overflow-hidden cursor-none">
         
-        <div class="absolute inset-0 transition-transform duration-700 group-hover:scale-105 bg-cover bg-center"
-             style="background-image: url('/assets/Landing.webp');"></div>
+        <img src="/assets/Landing.webp" alt="Landing Page para el departamento de sistemas de Lactéos los andes,
+            planta-cabudare, Estado lara - Venezuela" 
+             class="absolute inset-0 w-full h-full object-cover transition-transform
+              duration-700 group-hover:scale-105" />
+
         <div class="absolute inset-0 bg-black/70 lg:bg-black/50 lg:group-hover:bg-black/70 transition-colors duration-700"></div>
         <div class="absolute inset-0 flex flex-col items-center justify-center
                     opacity-100 lg:opacity-0 group-hover:opacity-100 transition-opacity duration-700
@@ -94,8 +100,11 @@
     <a href="work/blog" class="group">
       <div class="imagebg w-full rounded-3xl h-[250px] sm:h-[350px] md:h-[400px] lg:h-[500px] relative overflow-hidden cursor-none">
         
-        <div class="absolute inset-0 transition-transform duration-700 group-hover:scale-105 bg-cover bg-center"
-             style="background-image: url('/assets/blog.webp');"></div>
+        <img src="/assets/blog.webp" alt="Blog informativo para la comunidad la california Realizado con Wordpress y DiVI
+            - Barquisimeto, Venezuela" 
+             class="absolute inset-0 w-full h-full object-cover transition-transform 
+             duration-700 group-hover:scale-105" />
+
         <div class="absolute inset-0 bg-black/70 lg:bg-black/50 lg:group-hover:bg-black/70 transition-colors duration-700"></div>
         <div class="absolute inset-0 flex flex-col items-center justify-center
                     opacity-100 lg:opacity-0 group-hover:opacity-100 transition-opacity duration-700
@@ -112,7 +121,6 @@
   </div>
 </section>
 
-
 <script>
   import { gsap } from "gsap";
   import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -125,7 +133,7 @@
 
        document.fonts.ready.then(() => {
       // Título con SplitText (más vistoso)
-      const splitTitle = new SplitText("#projects-title", { type: "words" });
+      const splitTitle = new SplitText("#projcts-title", { type: "words" });
       gsap.from(splitTitle.words, {
         y: 50,
         opacity: 0,
@@ -133,21 +141,21 @@
         ease: "power3.out",
         stagger: 0.1,
         scrollTrigger: {
-          trigger: "#projects-title",
+          trigger: "#projcts-title",
           start: "top 80%",
           once: true,
         },
       });
    });
       // Botón Show More (independiente, sin margen residual)
-      gsap.from("#projects-btn", {
+      gsap.from("#projcts-btn", {
         x: 60,
         opacity: 0,
         duration: 0.8,
         ease: "power3.out",
         scrollTrigger: {
-          trigger: "#projects-btn",
-          start: "top 85%",
+          trigger: "#projcts-btn",
+          start: "top 80%",
           once: true,
         },
       });
